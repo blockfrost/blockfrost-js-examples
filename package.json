@@ -1,0 +1,19 @@
+{
+  "name": "@blockfrost/examples",
+  "version": "1.0.0",
+  "description": "A JavaScript/TypeScript SDK for interacting with the https://blockfrost.io API",
+  "keywords": [
+    "blockfrost",
+    "cardano",
+    "cardano api"
+  ],
+  "license": "Apache-2.0",
+  "author": "blockfrost.io",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "packageManager": "yarn@3.3.0",
+  "engines": {
+    "node": ">=16"
+  }
+}
