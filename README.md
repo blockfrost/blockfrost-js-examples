@@ -4,7 +4,7 @@
 
 | Example                                             | Description                                                                                     |
 | --------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
-| [Asset Explorer](./examples/asset-explorer)         | UI Explorer for Cardani assets [Live Preview](https://cardano-tokens.com)                       |
+| [Asset Explorer](./examples/asset-explorer)         | UI Explorer for Cardano assets [Live Preview](https://cardano-tokens.com)                       |
 | [Basic Javascript SDK](./examples/basic)            | Basic Endpoints from javascript SDK                                                             |
 | [Simple Transaction](./examples/simple-transaction) | How to create and send basic transaction using JS SDK                                           |
 | [Webhook Basic](./examples/webhook-basic)           | Webhook endpoint for receiving a webhook requests by Blockfrost using Node.js Express framework |
