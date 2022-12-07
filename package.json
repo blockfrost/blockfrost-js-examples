@@ -1,5 +1,6 @@
 {
   "name": "@blockfrost/examples",
+  "private": "true",
   "version": "1.0.0",
   "description": "A JavaScript/TypeScript SDK for interacting with the https://blockfrost.io API",
   "keywords": [
@@ -10,6 +11,9 @@
   "license": "Apache-2.0",
   "author": "blockfrost.io",
   "scripts": {},
+  "workspaces": [
+    "examples/*"
+  ],
   "dependencies": {},
   "devDependencies": {},
   "engines": {

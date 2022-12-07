@@ -1,6 +1,7 @@
 {
-  "private": true,
   "name": "@blockfrost/example-webhook-slack",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
     "build": "tsc -b",
     "start": "yarn run build && yarn node ./dist/index.js"

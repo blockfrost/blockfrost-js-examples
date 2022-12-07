@@ -1,6 +1,7 @@
 {
   "name": "@blockfrost/example-simple-transaction",
   "private": true,
+  "version": "1.0.0",
   "scripts": {
     "build": "rm -rf lib && tsc -b",
     "lint": "eslint ./src/**/*.ts",
