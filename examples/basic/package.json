@@ -4,9 +4,9 @@
   "scripts": {
     "build": "rm -rf dist && tsc -b",
     "lint": "eslint ./src/**/*.ts",
-    "start-api": "yarn build && yarn node ./lib/api.js",
+    "start-api": "yarn build && yarn node ./dist/api.js",
     "run-example:api": "yarn start-api",
-    "start-ipfs": "yarn build && yarn node ./lib/ipfs.js",
+    "start-ipfs": "yarn build && yarn node ./dist/ipfs.js",
     "run-example:ipfs": "yarn start-ipfs"
   },
   "dependencies": {

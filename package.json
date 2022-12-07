@@ -12,7 +12,6 @@
   "scripts": {},
   "dependencies": {},
   "devDependencies": {},
-  "packageManager": "yarn@3.3.0",
   "engines": {
     "node": ">=16"
   }
