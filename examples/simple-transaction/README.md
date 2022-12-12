@@ -18,16 +18,16 @@ This example is intended for learning purposes, not for practical use.
 
 _These instructions assume that you already have Node.js installed and you are already familiar with running hello world on Node.js._
 
-Clone the main Blockfrost SDK repository
+Clone the main Blockfrost examaples repository
 
 ```
-git clone https://github.com/blockfrost/blockfrost-js.git
+git clone git@github.com:blockfrost/blockfrost-js-examples.git
 ```
 
 Change directory to cloned repository `simple-transaction`
 
 ```
-cd blockfrost-js
+cd /examples/simple-transaction
 ```
 
 Install dependencies
