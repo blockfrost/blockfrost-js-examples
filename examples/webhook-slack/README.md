@@ -21,9 +21,26 @@ Create a slack app and generate Bot User OAuth Token by following [Slack: Basic 
 - `SLACK_BOT_TOKEN` - Slack Bot User OAuth Token (`xob-...`). You can find it under "OAuth & Permissions" section of [Slack App settings](https://api.slack.com/apps/)
 - `SLACK_CHANNEL_ID` - ID of the Slack channel where to send a notification
 
-#### Install dependencies and run the app
+Clone the main Blockfrost examaples repository
 
 ```
-yarn install
-yarn workspace @blockfrost/example-webhook-slack start
+git clone git@github.com:blockfrost/blockfrost-js-examples.git
+```
+
+Change directory to cloned repository `webhook-slack`
+
+```
+cd /examples/webhook-slack
+```
+
+Install dependencies
+
+```
+yarn
+```
+
+Run 
+
+```
+yarn start
 ```
