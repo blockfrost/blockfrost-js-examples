@@ -5,7 +5,7 @@
 
 <br/>
 
-<p align="center"><a href="https://blockfrost.io">Blockfrost.io</a> Examples</p>
+<p align="center"><a href="https://blockfrost.io">Blockfrost.io</a> Typescript Examples</p>
 <br>
 
 ### Examples in this repository
@@ -24,3 +24,11 @@
 | ------------------------------------------------------------------------------------------ | :------------------------------------------------------------------ |
 | [Blockfrost Websocket Link](https://github.com/blockfrost/blockfrost-websocket-link)       | WebSocket bridge to the Cardano blockchain using the Blockfrost API |
 | [Blockfrost Websocket Link UI](https://github.com/blockfrost/blockfrost-websocket-link-ui) | UI for Blockfrost Websocket Link                                    |
+
+### Thirdparty examples
+
+| Example                                          | Description                                                                                                                                                                      |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Keagate](https://github.com/dilan-dio4/Keagate) | Open-source, high-performance alternative to popular cryptocurrency payment gateways such as Coinbase Commerce, CoinGate, BitPay, NOWPayments, CoinRemitter, CoinsPaid and more. |
+
+Open a PR and add your own project!
