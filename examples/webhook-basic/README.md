@@ -26,5 +26,5 @@ cd /examples/webhook-basic
 
 ```
 yarn install
-yarn workspace @blockfrost/example-webhook-basic start
+yarn start
 ```
