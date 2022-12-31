@@ -27,7 +27,7 @@ git clone git@github.com:blockfrost/blockfrost-js-examples.git
 Change directory to cloned repository `simple-transaction`
 
 ```
-cd /examples/simple-transaction
+cd examples/simple-transaction
 ```
 
 Install dependencies
