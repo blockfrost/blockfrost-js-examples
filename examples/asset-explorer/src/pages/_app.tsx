@@ -1,6 +1,6 @@
 import { AppContext, AppInitialProps } from "next/app";
 import Head from "next/head";
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 
 import "public/css/global.css";
 
@@ -68,7 +68,7 @@ function App({
         />
       </Head>
       <a
-        href="https://github.com/blockfrost/blockfrost-demo-asset-explorer"
+        href="https://github.com/blockfrost/blockfrost-js-examples"
         className="github-corner"
         aria-label="View source on GitHub"
       >
