@@ -10,6 +10,7 @@ export default async (
   try {
     const assets = await blockfrostAPI.assets({
       order: req.query.order,
+      page: parseInt(req.query.page),
     });
 
     const assetsNexPage = await blockfrostAPI.assets({
