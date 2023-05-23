@@ -1,0 +1,31 @@
+{
+  "name": "@blockfrost/example-nft-transaction",
+  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf lib && tsc -b",
+    "lint": "eslint . --ext .ts",
+    "type-check": "tsc -p tsconfig.types.json",
+    "dev": "ts-node ./src/index.ts",
+    "start": "yarn build && yarn node ./dist/index.js"
+  },
+  "dependencies": {
+    "@blockfrost/blockfrost-js": "^5.3.1",
+    "@emurgo/cardano-serialization-lib-nodejs": "^11.4.0",
+    "bip39": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.59.7",
+    "@typescript-eslint/parser": "^5.59.7",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^2.8.8",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}
