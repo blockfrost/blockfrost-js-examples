@@ -4,38 +4,37 @@
 import {
   BlockFrostAPI,
   BlockfrostServerError,
-} from '@blockfrost/blockfrost-js';
+} from "@blockfrost/blockfrost-js";
 
-import { composeTransaction } from './helpers/composeTransaction';
-import { signTransaction } from './helpers/signTransaction';
-import { deriveAddressPrvKey, mnemonicToPrivateKey } from './helpers/key';
-import { UTXO } from './types';
+import { composeTransaction } from "./helpers/composeTransaction";
+import { signTransaction } from "./helpers/signTransaction";
+import { deriveAddressPrvKey, mnemonicToPrivateKey } from "./helpers/key";
+import { UTXO } from "./types";
 
 // BIP39 mnemonic (seed) from which we will generate address to retrieve utxo from and private key used for signing the transaction
 const MNEMONIC =
-  'maze riot drift silver field sadness shrimp affair whip embody odor damp';
+  "maze riot drift silver field sadness shrimp affair whip embody odor damp";
 
 // Recipient address (needs to be Bech32)
 const OUTPUT_ADDRESS =
-  'addr_test1qrzpr05qz7u7572hkyxl9gqrk90lgueftufaqk3glqswurq32vrcvj0rgef6s487ruu47me8uzp7cjvuuk2xsg4mtvsq50gf90';
+  "addr_test1qrzpr05qz7u7572hkyxl9gqrk90lgueftufaqk3glqswurq32vrcvj0rgef6s487ruu47me8uzp7cjvuuk2xsg4mtvsq50gf90";
 
 // Amount sent to the recipient
-const OUTPUT_AMOUNT = '1000000'; // 1 000 000 lovelaces = 1 ADA
+const OUTPUT_AMOUNT = "1000000"; // 1 000 000 lovelaces = 1 ADA
 
 if (!process.env.BLOCKFROST_PROJECT_ID) {
-  throw Error('Set env variable BLOCKFROST_PROJECT_ID');
+  throw Error("Set env variable BLOCKFROST_PROJECT_ID");
 }
 
 const client = new BlockFrostAPI({
   projectId: process.env.BLOCKFROST_PROJECT_ID,
-  network: 'testnet',
 });
 
 const run = async () => {
   // Derive an address (this is the address where you need to send ADA in order to have UTXO to actually make the transaction)
   const bip32PrvKey = mnemonicToPrivateKey(MNEMONIC);
-  const testnet = true;
-  const { signKey, address } = deriveAddressPrvKey(bip32PrvKey, testnet);
+  const testnetPreview = true;
+  const { signKey, address } = deriveAddressPrvKey(bip32PrvKey, testnetPreview);
   console.log(`Using address ${address}`);
 
   // Retrieve utxo for the address
@@ -55,7 +54,7 @@ const run = async () => {
   if (utxo.length === 0) {
     console.log();
     console.log(
-      `You should send ADA to ${address} to have enough funds to sent a transaction`,
+      `You should send ADA to ${address} to have enough funds to sent a transaction`
     );
     console.log();
   }
@@ -67,7 +66,7 @@ const run = async () => {
   const latestBlock = await client.blocksLatest();
   const currentSlot = latestBlock.slot;
   if (!currentSlot) {
-    throw Error('Failed to fetch slot number');
+    throw Error("Failed to fetch slot number");
   }
 
   // Prepare transaction
@@ -76,7 +75,7 @@ const run = async () => {
     OUTPUT_ADDRESS,
     OUTPUT_AMOUNT,
     utxo,
-    currentSlot,
+    currentSlot
   );
 
   // Sign transaction
