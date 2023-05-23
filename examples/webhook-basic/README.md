@@ -16,15 +16,9 @@ _These instructions assume that you already have Node.js installed and you are a
 git clone git@github.com:blockfrost/blockfrost-js-examples.git
 ```
 
-Change directory to cloned repository `simple-transaction`
-
-```
-cd /examples/webhook-basic
-```
-
 #### Install dependencies and run the app
 
 ```
-yarn install
-yarn start
+yarn
+yarn workspace @blockfrost/example-webhook-basic start
 ```

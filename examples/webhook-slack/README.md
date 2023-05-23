@@ -27,20 +27,14 @@ Clone the main Blockfrost examaples repository
 git clone git@github.com:blockfrost/blockfrost-js-examples.git
 ```
 
-Change directory to cloned repository `webhook-slack`
-
-```
-cd /examples/webhook-slack
-```
-
 Install dependencies
 
 ```
 yarn
 ```
 
-Run 
+Run
 
 ```
-yarn start
+yarn workspace @blockfrost/example-webhook-slack start
 ```
