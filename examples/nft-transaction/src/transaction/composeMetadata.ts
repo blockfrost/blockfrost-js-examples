@@ -10,13 +10,9 @@ export const composeMetadata = (
   const assetsUnderPolicy: {
     [name: string]: AssetMetadata;
   } = {};
+
   for (const asset of assets) {
-    assetsUnderPolicy[`0x${Buffer.from(asset.name, 'utf-8').toString('hex')}`] = {
-      name: asset.name,
-      image: asset.metadata.image,
-      ...(asset.metadata.mediaType ? { mediaType: asset.metadata.mediaType } : {}),
-      ...(asset.metadata.description ? { description: asset.metadata.description } : {}),
-    };
+    assetsUnderPolicy[`0x${Buffer.from(asset.name, 'utf-8').toString('hex')}`] = asset.metadata;
   }
 
   const obj = {

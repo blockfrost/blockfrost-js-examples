@@ -12,7 +12,7 @@ const MNEMONIC = 'maze riot drift silver field sadness shrimp affair whip embody
 const OUTPUT_ADDRESS =
   'addr_test1qr3uhus8q7pat5a2h99t4ws4upt9excr5ce5k4fp7lv6qfcjvuw9j2fcs3xpgqxkt5f5zd0rtd8jnnw8n2s5qjswzyfqmyqptf';
 
-// Minted asset
+// Minted assets
 const ASSET = [
   {
     name: `HelloNFT`,
@@ -71,7 +71,6 @@ const mintNFT = async () => {
   const currentSlot = latestBlock.slot ?? 0;
 
   // Upload image to IPFS
-  // const cid = 'fake'; // returns hash of the image
   const ipfsObject = await ipfsClient.add(IMAGE_PATH);
   const cid = ipfsObject.ipfs_hash;
 
@@ -91,9 +90,9 @@ const mintNFT = async () => {
       quantity: asset.quantity,
       metadata: {
         name: asset.name,
-        image: `ipfs://${cid}`, // yes, the image is same for all minted assets
+        image: `ipfs://${cid}`,
         mediaType: 'image/png',
-        description: asset.metadata.description, // max 64 chars
+        ...asset.metadata,
       },
     })),
   );
