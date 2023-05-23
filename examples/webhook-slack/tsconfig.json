@@ -5,9 +5,10 @@
     "module": "commonjs",
     "outDir": "dist",
     "rootDir": "src",
+    "esModuleInterop": true,
     "strict": true,
     "target": "es2017",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "include": ["src/**/*"]
 }
