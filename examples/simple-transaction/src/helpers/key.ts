@@ -1,5 +1,5 @@
-import * as CardanoWasm from '@emurgo/cardano-serialization-lib-nodejs';
-import { mnemonicToEntropy } from 'bip39';
+import * as CardanoWasm from "@emurgo/cardano-serialization-lib-nodejs";
+import { mnemonicToEntropy } from "bip39";
 
 const harden = (num: number): number => {
   return 0x80000000 + num;
@@ -7,13 +7,13 @@ const harden = (num: number): number => {
 
 export const deriveAddressPrvKey = (
   bipPrvKey: CardanoWasm.Bip32PrivateKey,
-  testnet: boolean,
+  testnetPreview: boolean
 ): {
   signKey: CardanoWasm.PrivateKey;
   address: string;
 } => {
-  const networkId = testnet
-    ? CardanoWasm.NetworkInfo.testnet().network_id()
+  const networkId = testnetPreview
+    ? CardanoWasm.NetworkInfo.testnet_preview().network_id()
     : CardanoWasm.NetworkInfo.mainnet().network_id();
   const accountIndex = 0;
   const addressIndex = 0;
@@ -35,9 +35,9 @@ export const deriveAddressPrvKey = (
   const baseAddress = CardanoWasm.BaseAddress.new(
     networkId,
     CardanoWasm.StakeCredential.from_keyhash(
-      utxoKey.to_public().to_raw_key().hash(),
+      utxoKey.to_public().to_raw_key().hash()
     ),
-    CardanoWasm.StakeCredential.from_keyhash(stakeKey.to_raw_key().hash()),
+    CardanoWasm.StakeCredential.from_keyhash(stakeKey.to_raw_key().hash())
   );
 
   const address = baseAddress.to_address().to_bech32();
@@ -46,13 +46,13 @@ export const deriveAddressPrvKey = (
 };
 
 export const mnemonicToPrivateKey = (
-  mnemonic: string,
+  mnemonic: string
 ): CardanoWasm.Bip32PrivateKey => {
   const entropy = mnemonicToEntropy(mnemonic);
 
   const rootKey = CardanoWasm.Bip32PrivateKey.from_bip39_entropy(
-    Buffer.from(entropy, 'hex'),
-    Buffer.from(''),
+    Buffer.from(entropy, "hex"),
+    Buffer.from("")
   );
 
   return rootKey;
