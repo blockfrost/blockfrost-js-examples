@@ -23,7 +23,7 @@ const ASSET = [
   },
 ];
 // Path to the image for the asset which will be uploaded to IPFS
-const IMAGE_PATH: string | null = '<PNG-FILEPATH>';
+const IMAGE_PATH = '<PNG-FILEPATH>';
 
 if (!process.env.BLOCKFROST_PROJECT_ID || !process.env.BLOCKFROST_PROJECT_ID_IPFS) {
   throw Error('Environment variable BLOCKFROST_PROJECT_ID or BLOCKFROST_PROJECT_ID_IPFS not set');

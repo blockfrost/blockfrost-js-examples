@@ -2,8 +2,9 @@
 
 This example shows how to mint a simple NFT with Blockfrost SDK for Node.js and Cardano Serialization Lib.
 
-Blockfrost SDK is used to retrieve UTxO for an address, current slot number and finally to push a transaction to the blockchain.
-Constructing the transaction is done with [Cardano Serialization Lib](https://github.com/Emurgo/cardano-serialization-lib).
+Blockfrost SDK is used to retrieve UTxO for an address, current slot number to compute TTL and finally to push a transaction to the blockchain. Minted NFT follows [CIP-25 v2](https://cips.cardano.org/cips/cip25/) metadata standard and the NFT's image is uploaded to IPFS and pinned upon successful mint.
+
+Constructing the transaction itself is done with [Cardano Serialization Lib](https://github.com/Emurgo/cardano-serialization-lib).
 You should definitely follow its documentation and examples for more information.
 
 _This example is written in Typescript and it is intended to run on Node.js, not in a browser. Follow the instructions below to run it._
@@ -45,12 +46,13 @@ In [./src/index.ts](https://github.com/blockfrost/blockfrost-js-examples/blob/ma
 const MNEMONIC = 'maze riot drift silver field sadness shrimp affair whip embody odor damp';
 
 // Recipient address (needs to be in Bech32)
+// MINTED NFT WILL BE SENT TO THIS ADDRESS
 // This is technically an airdrop if the address is not yours!
 const OUTPUT_ADDRESS =
   'addr_test1qrzpr05qz7u7572hkyxl9gqrk90lgueftufaqk3glqswurq32vrcvj0rgef6s487ruu47me8uzp7cjvuuk2xsg4mtvsq50gf90';
 
 // Path to the image for the asset which will be uploaded to IPFS
-const IMAGE_PATH: string | null = '<PNG-FILEPATH>';
+const IMAGE_PATH = '<PNG-FILEPATH>';
 ```
 
 Set your Blockfrost api key to environment variable `BLOCKFROST_PROJECT_ID` and `BLOCKFROST_PROJECT_ID_IPFS` and run the script
