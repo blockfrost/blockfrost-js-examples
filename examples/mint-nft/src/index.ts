@@ -91,7 +91,7 @@ const mintNFT = async () => {
       metadata: {
         name: asset.name,
         image: `ipfs://${cid}`,
-        mediaType: 'image/png',
+        mediaType: 'image/svg+xml',
         ...asset.metadata,
       },
     })),
