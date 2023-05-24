@@ -10,10 +10,16 @@ _This example is written in Typescript and it is intended to run on Node.js, not
 
 _These instructions assume that you already have Node.js installed and you are already familiar with running hello world on Node.js._
 
-#### Clone the main Blockfrost examaples repository
+#### Clone the main Blockfrost examples repository
 
 ```
 git clone git@github.com:blockfrost/blockfrost-js-examples.git
+```
+
+Change directory to cloned repository `blockfrost-js-examples`
+
+```
+cd blockfrost-js-examples
 ```
 
 #### Install dependencies and run the app
