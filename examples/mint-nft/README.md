@@ -51,8 +51,8 @@ const MNEMONIC = 'maze riot drift silver field sadness shrimp affair whip embody
 const OUTPUT_ADDRESS =
   'addr_test1qrzpr05qz7u7572hkyxl9gqrk90lgueftufaqk3glqswurq32vrcvj0rgef6s487ruu47me8uzp7cjvuuk2xsg4mtvsq50gf90';
 
-// Path to the image for the asset which will be uploaded to IPFS
-const IMAGE_PATH = '<PNG-FILEPATH>';
+// Path to the image for the asset which will be uploaded to IPFS, defaults to blockfrost logo in the repo
+const IMAGE_PATH = './blockfrost.svg';
 ```
 
 Set your Blockfrost api key to environment variable `BLOCKFROST_PROJECT_ID` and `BLOCKFROST_PROJECT_ID_IPFS` and run the script
