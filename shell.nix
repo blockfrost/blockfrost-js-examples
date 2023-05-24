@@ -15,6 +15,9 @@ pkgs.stdenv.mkDerivation {
     (pkgs.yarn.override { inherit nodejs; })
   ];
   shellHook = ''
+    # Modify & uncomment the following lines to automatically export your secrets
+    #export BLOCKFROST_PROJECT_ID=previewYourPreviewNetworkToken
+    #export BLOCKFROST_PROJECT_ID_IPFS=ipfsYourIPFSToken
     export PATH="$PATH:$(pwd)/node_modules/.bin"
     yarn
   '';
