@@ -24,6 +24,12 @@ Clone the main Blockfrost examples repository
 git clone git@github.com:blockfrost/blockfrost-js-examples.git
 ```
 
+Change directory to cloned repository `blockfrost-js-examples`
+
+```
+cd blockfrost-js-examples
+```
+
 Install dependencies
 
 ```
