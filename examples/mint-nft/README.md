@@ -1,6 +1,6 @@
-# nft-transaction
+# mint-nft
 
-This example shows how to mint NFT with Blockfrost SDK for Node.js and Cardano Serialization Lib.
+This example shows how to mint a simple NFT with Blockfrost SDK for Node.js and Cardano Serialization Lib.
 
 Blockfrost SDK is used to retrieve UTxO for an address, current slot number and finally to push a transaction to the blockchain.
 Constructing the transaction is done with [Cardano Serialization Lib](https://github.com/Emurgo/cardano-serialization-lib).
@@ -32,7 +32,7 @@ yarn
 
 Now check the source code! You don't want to run something you know nothing about, right? RIGHT?
 
-In [./src/index.ts](https://github.com/blockfrost/blockfrost-js/blob/master/examples/nft-transaction/src/index.ts) you will find few constants that you can play with. Changing `MNEMONIC` is highly recommended because your transaction will likely fail if multiple people are building their transactions using the same seed, thus UTXO.
+In [./src/index.ts](https://github.com/blockfrost/blockfrost-js-examples/blob/master/examples/mint-nft/src/index.ts) you will find few constants that you can play with. Changing `MNEMONIC` is highly recommended because your transaction will likely fail if multiple people are building their transactions using the same seed, thus UTXO.
 
 ```js
 // BIP39 mnemonic (seed) from which we will generate address to retrieve utxo from and private key used for signing the transaction
@@ -49,7 +49,7 @@ const IMAGE_PATH: string | null = '<PNG-FILEPATH>';
 Set your Blockfrost api key to environment variable `BLOCKFROST_PROJECT_ID` and `BLOCKFROST_PROJECT_ID_IPFS` and run the script
 
 ```
-yarn workspace @blockfrost/example-nft-transaction start
+yarn workspace @blockfrost/example-mint-nft start
 ```
 
 It may happen that the default (or your own) seed doesn't hold enough funds on its first address derived with derivation path `m/1852'/1815'/0'/0/0` (common derivation path used by wallets). In that case the address will be displayed in the console. You can get some tADA from [Cardano testnet faucet](https://testnets.cardano.org/en/testnets/cardano/tools/faucet/).

@@ -1,5 +1,5 @@
 {
-  "name": "@blockfrost/example-nft-transaction",
+  "name": "@blockfrost/example-mint-nft",
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
