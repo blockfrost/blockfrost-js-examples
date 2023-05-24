@@ -38,13 +38,14 @@ yarn
 
 Now check the source code! You don't want to run something you know nothing about, right? RIGHT?
 
-In [./src/index.ts](https://github.com/blockfrost/blockfrost-js-examples/blob/master/examples/mint-nft/src/index.ts) you will find few constants that you can play with. Changing `MNEMONIC` is highly recommended because your transaction will likely fail if multiple people are building their transactions using the same seed, thus UTXO.
+In [./src/index.ts](https://github.com/blockfrost/blockfrost-js-examples/blob/master/examples/mint-nft/src/index.ts) you will find few constants that you can play with. Changing `MNEMONIC` is highly recommended because your transaction will likely fail if multiple people are building their transactions using the same seed, thus UTxO.
 
 ```js
-// BIP39 mnemonic (seed) from which we will generate address to retrieve utxo from and private key used for signing the transaction
+// BIP39 mnemonic (seed) from which we will generate address to retrieve UTxO from and private key used for signing the transaction
 const MNEMONIC = 'maze riot drift silver field sadness shrimp affair whip embody odor damp';
 
 // Recipient address (needs to be in Bech32)
+// This is technically an airdrop if the address is not yours!
 const OUTPUT_ADDRESS =
   'addr_test1qrzpr05qz7u7572hkyxl9gqrk90lgueftufaqk3glqswurq32vrcvj0rgef6s487ruu47me8uzp7cjvuuk2xsg4mtvsq50gf90';
 
