@@ -8,16 +8,20 @@
 <p align="center"><a href="https://blockfrost.io">Blockfrost.io</a> Typescript Examples</p>
 <br>
 
+### Installing Node.js SDK
+
+Examples in this repository leverage Blockfrost SDK for Node.js. For a deeper dive into the SDK and guidelines on how to incorporate it into your project visit [blockfrost-js](https://github.com/blockfrost/blockfrost-js).
+
 ### Examples in this repository
 
-| Example                                             | Description                                                                                     |
-| --------------------------------------------------- | :---------------------------------------------------------------------------------------------- |
-| [Asset Explorer](./examples/asset-explorer)         | UI Explorer for Cardano assets [Live Preview](https://cardano-tokens.com)                       |
-| [Basic Javascript SDK](./examples/basic)            | Basic Endpoints from javascript SDK                                                             |
-| [Simple Transaction](./examples/simple-transaction) | How to create and send basic transaction using JS SDK                                           |
-| [NFT minting](./examples/mint-nft)                  | Example of simple NFT mint using JS SDK and Cardano Serialization Lib                           |
-| [Webhook Basic](./examples/webhook-basic)           | Webhook endpoint for receiving a webhook requests by Blockfrost using Node.js Express framework |
-| [Webhook Slack](./examples/webhook-slack)           | Sends a message via Slack after receiving a webhook request sent by Blockfrost                  |
+| Example                                             | Description                                                                           |
+| --------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| [Asset Explorer](./examples/asset-explorer)         | UI Explorer for Cardano assets [Live Preview](https://cardano-tokens.com)             |
+| [Basic Javascript SDK](./examples/basic)            | Basic example calling Blockfrost endpoints                                            |
+| [Simple Transaction](./examples/simple-transaction) | Build and send simple transaction using JS SDK and Cardano Serialization Lib          |
+| [NFT minting](./examples/mint-nft)                  | Simple NFT mint (CIP-25) using JS SDK and Cardano Serialization Lib                   |
+| [Webhook Basic](./examples/webhook-basic)           | Basic endpoint for receiving Webhook requests using Node.js Express framework         |
+| [Webhook Slack](./examples/webhook-slack)           | Forward blockchain events (new block, tx, epoch,...) sent by Webhook to Slack channel |
 
 ### Other Examples
 

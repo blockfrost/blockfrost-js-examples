@@ -12,7 +12,8 @@ _These instructions assume that you already have Node.js installed and you are a
 
 ### Create a Slack bot
 
-Create a slack app and generate Bot User OAuth Token by following [Slack: Basic app setup](https://api.slack.com/authentication/basics)
+Create a slack app and generate Bot User OAuth Token by following [Slack: Basic app setup](https://api.slack.com/authentication/basics).
+Don't forget to invite the app bot to a channel where you want to send messages.
 
 ### Set environment variables
 
