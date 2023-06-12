@@ -46,6 +46,9 @@ const mintNFT = async () => {
   );
   console.log(`Using address ${address}`);
 
+  // Retrieve protocol parameters
+  const protocolParams = await blockfrostClient.epochsLatestParameters();
+
   // Retrieve utxo for the address
   let utxo: UTXO = [];
   try {
@@ -84,7 +87,6 @@ const mintNFT = async () => {
     address,
     OUTPUT_ADDRESS,
     utxo,
-    currentSlot,
     ASSET.map(asset => ({
       name: asset.name,
       quantity: asset.quantity,
@@ -95,6 +97,10 @@ const mintNFT = async () => {
         ...asset.metadata,
       },
     })),
+    {
+      currentSlot,
+      protocolParams,
+    },
   );
 
   console.log('OUTPUTS:');

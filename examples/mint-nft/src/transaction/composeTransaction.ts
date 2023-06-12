@@ -1,16 +1,19 @@
 import * as CardanoWasm from '@emurgo/cardano-serialization-lib-nodejs';
-import { CARDANO_PARAMS } from '../constants/cardano';
 import { Asset, UTXO } from '../types';
 import { composeMetadata } from './composeMetadata';
 import { bigNumFromStr, getAssetAmount, sortUtxos } from '../utils/misc';
+import { Responses } from '@blockfrost/blockfrost-js';
 
 export const composeTransaction = (
   pubKeyHash: CardanoWasm.Ed25519KeyHash,
   address: string,
   outputAddress: string,
   utxos: UTXO,
-  currentSlot: number,
   assets: Asset[],
+  params: {
+    protocolParams: Responses['epoch_param_content'];
+    currentSlot: number;
+  },
 ): {
   txHash: string;
   txBody: CardanoWasm.TransactionBody;
@@ -23,19 +26,27 @@ export const composeTransaction = (
 
   const txBuilder = CardanoWasm.TransactionBuilder.new(
     CardanoWasm.TransactionBuilderConfigBuilder.new()
-      .fee_algo(CardanoWasm.LinearFee.new(bigNumFromStr('44'), bigNumFromStr('155381')))
-      .pool_deposit(bigNumFromStr('500000000'))
-      .key_deposit(bigNumFromStr('2000000'))
-      .coins_per_utxo_word(bigNumFromStr(CARDANO_PARAMS.COINS_PER_UTXO_WORD))
-      .max_value_size(CARDANO_PARAMS.MAX_VALUE_SIZE)
-      .max_tx_size(CARDANO_PARAMS.MAX_TX_SIZE)
+      .fee_algo(
+        CardanoWasm.LinearFee.new(
+          bigNumFromStr(params.protocolParams.min_fee_a.toString()),
+          bigNumFromStr(params.protocolParams.min_fee_b.toString()),
+        ),
+      )
+      .pool_deposit(bigNumFromStr(params.protocolParams.pool_deposit))
+      .key_deposit(bigNumFromStr(params.protocolParams.key_deposit))
+      // coins_per_utxo_size is already introduced in current Cardano fork
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      .coins_per_utxo_byte(bigNumFromStr(params.protocolParams.coins_per_utxo_size!))
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      .max_value_size(parseInt(params.protocolParams.max_val_size!))
+      .max_tx_size(params.protocolParams.max_tx_size)
       .build(),
   );
 
   const outputAddr = CardanoWasm.Address.from_bech32(outputAddress);
   const changeAddr = CardanoWasm.Address.from_bech32(address);
 
-  const ttl = currentSlot + 1800; // +30 mins from currentSlot
+  const ttl = params.currentSlot + 1800; // +30 mins from currentSlot
   txBuilder.set_ttl(ttl);
 
   const nativeScripts = CardanoWasm.NativeScripts.new();
@@ -82,13 +93,17 @@ export const composeTransaction = (
   }
 
   const outputValue = CardanoWasm.Value.new_from_assets(multiasset);
-  const minAdaToCoverMultiasset = CardanoWasm.min_ada_required(
-    outputValue,
-    false,
-    bigNumFromStr(CARDANO_PARAMS.COINS_PER_UTXO_WORD),
-  );
-  outputValue.set_coin(minAdaToCoverMultiasset);
   const output = CardanoWasm.TransactionOutput.new(outputAddr, outputValue);
+
+  const minAdaForOutput = CardanoWasm.min_ada_for_output(
+    output,
+    CardanoWasm.DataCost.new_coins_per_byte(
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      CardanoWasm.BigNum.from_str(params.protocolParams.coins_per_utxo_size!),
+    ),
+  );
+
+  outputValue.set_coin(minAdaForOutput);
   txBuilder.add_output(output);
 
   // Add UTXOs as tx inputs

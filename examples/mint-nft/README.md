@@ -2,7 +2,7 @@
 
 This example shows how to mint a simple NFT with Blockfrost SDK for Node.js and Cardano Serialization Lib.
 
-Blockfrost SDK is used to retrieve UTxO for an address, current slot number to compute TTL and finally to push a transaction to the blockchain. Minted NFT follows [CIP-25 v2](https://cips.cardano.org/cips/cip25/) metadata standard and the NFT's image is uploaded to IPFS and pinned upon successful mint.
+Blockfrost SDK is used to retrieve UTxO for an address, protocol parameters, current slot number to compute TTL and finally to push a transaction to the blockchain. Minted NFT follows [CIP-25 v2](https://cips.cardano.org/cips/cip25/) metadata standard and the NFT's image is uploaded to IPFS and pinned upon successful mint.
 
 Constructing the transaction itself is done with [Cardano Serialization Lib](https://github.com/Emurgo/cardano-serialization-lib).
 You should definitely follow its documentation and examples for more information.

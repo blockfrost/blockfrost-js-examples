@@ -2,7 +2,7 @@
 
 This examples shows how to build a simple transaction with Blockfrost SDK for Node.js and Cardano Serialization Lib.
 
-Blockfrost SDK is used to retrieve UTxO for an address, current slot number and finally to push a transaction to the blockchain.
+Blockfrost SDK is used to retrieve UTxO for an address, protocol parameters and current slot number and finally to push a transaction to the blockchain.
 Constructing the transaction is done with [Cardano Serialization Lib](https://github.com/Emurgo/cardano-serialization-lib).
 You should definitely follow its documentation and examples for more information.
 
