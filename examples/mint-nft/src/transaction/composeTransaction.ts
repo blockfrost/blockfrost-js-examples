@@ -93,8 +93,9 @@ export const composeTransaction = (
   }
 
   const outputValue = CardanoWasm.Value.new_from_assets(multiasset);
-  const output = CardanoWasm.TransactionOutput.new(outputAddr, outputValue);
 
+  // Figure out min ada value for the output
+  let output = CardanoWasm.TransactionOutput.new(outputAddr, outputValue);
   const minAdaForOutput = CardanoWasm.min_ada_for_output(
     output,
     CardanoWasm.DataCost.new_coins_per_byte(
@@ -104,6 +105,8 @@ export const composeTransaction = (
   );
 
   outputValue.set_coin(minAdaForOutput);
+  // Replace the output now with the correct min ada value we've calculated above
+  output = CardanoWasm.TransactionOutput.new(outputAddr, outputValue);
   txBuilder.add_output(output);
 
   // Add UTXOs as tx inputs
