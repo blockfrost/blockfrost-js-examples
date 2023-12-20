@@ -1,20 +1,20 @@
 {
-    "name": "@blockfrost/example-basic",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "build": "rm -rf dist && tsc -b",
-        "lint": "eslint ./src/**/*.ts",
-        "start-api": "yarn build && yarn node ./dist/api.js",
-        "run-example:api": "yarn start-api",
-        "start-ipfs": "yarn build && yarn node ./dist/ipfs.js",
-        "run-example:ipfs": "yarn start-ipfs"
-    },
-    "dependencies": {
-        "@blockfrost/blockfrost-js": "5.3.1"
-    },
-    "devDependencies": {
-        "@types/node": "^14.6.0",
-        "typescript": "^5.0.4"
-    }
+  "name": "@blockfrost/example-basic",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "rm -rf dist && tsc -b",
+    "lint": "eslint ./src/**/*.ts",
+    "start-api": "yarn build && yarn node ./dist/api.js",
+    "run-example:api": "yarn start-api",
+    "start-ipfs": "yarn build && yarn node ./dist/ipfs.js",
+    "run-example:ipfs": "yarn start-ipfs"
+  },
+  "dependencies": {
+    "@blockfrost/blockfrost-js": "^5.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.6.0",
+    "typescript": "^5.0.4"
+  }
 }
