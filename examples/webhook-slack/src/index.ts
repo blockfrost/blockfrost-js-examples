@@ -13,34 +13,24 @@ const SECRET_AUTH_TOKEN = process.env.SECRET_AUTH_TOKEN ?? '';
 const app = express();
 
 // Define endpoint /webhook that accepts POST requests
-app.post(
-  '/webhook',
-  express.json({ type: 'application/json' }),
-  (request, response) => {
-    const signatureHeader = request.headers['blockfrost-signature'];
+app.post('/webhook', express.json({ type: 'application/json' }), (request, response) => {
+  const signatureHeader = request.headers['blockfrost-signature'];
 
-    // Make sure that Blockfrost-Signature header exists
-    if (!signatureHeader) {
-      console.log('The request is missing Blockfrost-Signature header');
-      return response.status(400).send(`Missing signature header`);
-    }
+  // Make sure that Blockfrost-Signature header exists
+  if (!signatureHeader) {
+    console.log('The request is missing Blockfrost-Signature header');
+    return response.status(400).send(`Missing signature header`);
+  }
 
-    try {
-      verifyWebhookSignature(
-        JSON.stringify(request.body), // stringified request.body
-        signatureHeader,
-        SECRET_AUTH_TOKEN,
-        600, // optional param to customize maximum allowed age of the webhook event, defaults to 600s
-      );
-    } catch (error) {
-      // In case of invalid signature verifyWebhookSignature will throw SignatureVerificationError
-      // for easier debugging you can access passed signatureHeader and webhookPayload values (error.detail.signatureHeader, error.detail.webhookPayload)
-      console.error(error);
-      return response.status(400).send('Signature is not valid!');
-    }
-
+  try {
+    const event = verifyWebhookSignature(
+      JSON.stringify(request.body), // stringified request.body
+      signatureHeader,
+      SECRET_AUTH_TOKEN,
+      600, // optional param to customize maximum allowed age of the webhook event, defaults to 600s
+    );
     // Signature is valid
-    const { type, payload } = request.body;
+    const { type, payload } = event;
 
     // Process the incoming event
     switch (type) {
@@ -95,7 +85,12 @@ app.post(
 
     // Return status code 2xx
     response.json({ status: 'ok' });
-  },
-);
+  } catch (error) {
+    // In case of invalid signature verifyWebhookSignature will throw SignatureVerificationError
+    // for easier debugging you can access passed signatureHeader and webhookPayload values (error.detail.signatureHeader, error.detail.webhookPayload)
+    console.error(error);
+    return response.status(400).send('Signature is not valid!');
+  }
+});
 
 app.listen(process.env.PORT ?? 6666, () => console.log('Running on port 6666'));
